@@ -13,18 +13,6 @@ const getKonselor = async (req, res) => {
   }
 };
 
-// Dapatkan jumlah data konselor
-const getKonselorAll = async (req, res) => {
-  try {
-    const result = await pool.query(queries.getKonselorAll);
-    const count = result.rows[0].count;
-    res.json({count})
-  } catch (error) {
-    console.error('Terjadi kesalahan saat mengambil jumlah konselor', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-  }
-}
-
 // Dapatkan data konselor berdasarkan ID
 const getKonselorById = async (req, res) => {
     try {
@@ -119,7 +107,6 @@ const updateKonselor = async (req, res) => {
          
 module.exports = {
     getKonselor,
-    getKonselorAll,
     getKonselorById,
     addKonselor,
     deleteKonselor,

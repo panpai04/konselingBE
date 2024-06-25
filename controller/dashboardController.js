@@ -1,60 +1,62 @@
 const pool = require('../config/connection');
-const queriesSiswa = require('../model/siswaModel');
-const queriesKonselor = require('../model/konselorModel');
-const queriesPelanggaran = require('../model/pelanggaranModel')
+const { getStudentsAll } = require('../model/siswaModel');
+const { getKelasAll } = require('../model/kelasModel')
+const { getPelanggaranAll } = require('../model/pelanggaranModel');
+const { getKonselorAll } = require('../model/konselorModel')
 
-//Function dashboard Admin
-const dashboardAdmin = async (req, res) => {
+
+// Dapatkan jumlah data siswa
+const getCountStudent = async (req, res) => {
     try {
-        // // Dapatkan username login
-        // const userName = req.userName;
-
-        // Query jumlah siswa
-        const resultStudents = await pool.query(queriesSiswa.getStudentsAll);
-        const jumlahStudents = resultStudents.rows[0] ? parseInt(resultStudents.rows[0].count) : 0;
-
-        // Query jumlah konselor
-        const resultKonselor = await pool.query(queriesKonselor.getKonselorAll);
-        const jumlahKonselor = resultKonselor.rows[0] ? parseInt(resultKonselor.rows[0].count) : 0;
-
-        // Query jumlah pelanggaran
-        const resultPelanggaran = await pool.query(queriesPelanggaran.getPelanggaranAll);
-        const jumlahPelanggaran = resultPelanggaran.rows[0] ? parseInt(resultPelanggaran.rows[0].count) : 0;
-
-        res.render('dashboard/admin', {
-            greeting: userName,
-            jumlahStudents,
-            jumlahKonselor,
-            jumlahPelanggaran,
-            userRole: req.userRole,
-            layout: 'layouts/admin-dashboard-layout',
-            title: 'Dashboard'
-        });
+      const result = await pool.query(getStudentsAll);
+      const count = result.rows[0].count;
+      res.json({count})
     } catch (error) {
-        console.error('Error:', error);
-        res.status(500).send('Internal Server Error');
+      console.error('Terjadi kesalahan saat mengambil jumlah siswa', error);
+      res.status(500).json({ error: 'Internal Server Error' });
     }
+}
+
+// Dapatkan jumlah data kelas
+const getCountKelas = async (req, res) => {
+    try {
+        const result = await pool.query(getKelasAll);
+        const count = result.rows[0].count;
+        res.json({count});
+    } catch (error) {
+        console.error('Terjadi kesalahan saat mengambil jumlah kelas', error);
+        res.status(500).send('Internal Server Error');
+    };
 };
 
-//Function dashboard siswa
-const dashboardSiswa = async (req, res) => {
+// Dapatkan jumlah data pelanggaran
+const getCountPelanggaran = async (req, res) => {
     try {
-        // Dapatkan username login
-        const userName = req.userName;
-
-        res.render('dashboard/siswa', {
-            greeting: userName,
-            userRole: req.userRole,
-            layout: 'layouts/siswa-dashboard-layout',
-            title: 'Dashboard'
-        });
+        const result = await pool.query(getPelanggaranAll);
+        const count = result.rows[0].count;
+        res.json({count});
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Terjadi kesalahan saat mengambil jumlah kelas', error);
         res.status(500).send('Internal Server Error');
-    }
+    };
 };
+
+// Dapatkan jumlah data konselor
+const getCountKonselor = async (req, res) => {
+    try {
+      const result = await pool.query(getKonselorAll);
+      const count = result.rows[0].count;
+      res.json({count})
+    } catch (error) {
+      console.error('Terjadi kesalahan saat mengambil jumlah konselor', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+  }
+
 
 module.exports = {
-    dashboardAdmin,
-    dashboardSiswa
+    getCountStudent,
+    getCountKelas,
+    getCountPelanggaran,
+    getCountKonselor,
 };

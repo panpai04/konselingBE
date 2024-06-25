@@ -39,19 +39,6 @@ const getClassName = async (req, res) => {
   }
 };
 
-// Dapatkan jumlah data kelas
-
-const getKelasAll = async (req, res) => {
-    try {
-        const result = await pool.query(queries.getKelasAll);
-        const count = result.rows[0].count;
-        res.json({count});
-    } catch (error) {
-        console.error('Terjadi kesalahan saat mengambil jumlah kelas', error);
-        res.status(500).send('Internal Server Error');
-    };
-};
-
 // Dapatkan data kelas berdasarkan ID
 const getKelasById = async (req, res) => {
     try {
@@ -144,7 +131,6 @@ module.exports = {
     getKelas,
     getKelasOptions,
     getClassName,
-    getKelasAll,
     SiswaKelasById,
     getKelasById,
     addKelas,

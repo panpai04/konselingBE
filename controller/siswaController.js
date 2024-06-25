@@ -23,19 +23,6 @@ const getStudents = async (req, res) => {
     };
 };
 
-// Dapatkan jumlah data siswa
-const getStudentsAll = async (req, res) => {
-    try {
-      const result = await pool.query(queries.getStudentsAll);
-      const count = result.rows[0].count;
-      res.json({count})
-    } catch (error) {
-      console.error('Terjadi kesalahan saat mengambil jumlah siswa', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-
-}
-
 // Dapatkan data siswa berdasarkan ID
 const getStudentsById = async (req, res) => {
     try {
@@ -91,29 +78,10 @@ const deleteStudent = async (req, res) => {
         res.status(500).send('Internal Server Error');
     };
 };
-// Hapus seluruh data Siswa
-const deleteAllStudent = async (req, res) => {
-    try {
-        const result = await pool.query(queries.deleteAllStudent);
-        if (!result.rowCount) {
-            res.status(404).send("Anda belum memasukkan data siswa");
-            return;
-        }
-        res.status(200).send("Siswa berhasil dihapus semua");
-    } catch (error){
-        res.status(500).send("internal server errror")
-    };
-};
-
-
-
 
 module.exports = {
     getStudents,
-
-    getStudentsAll,
     getStudentsById,
     deleteStudent,
-    deleteAllStudent,
     updateStudent,
 }
