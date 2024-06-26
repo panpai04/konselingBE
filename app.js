@@ -31,6 +31,7 @@ const konselingRoutes = require('./routes/konselingRoutes');
 const usersRoutes = require('./routes/usersRoutes');
 const literasiRoutes = require('./routes/literasiRoutes');
 const layananKonselingRoutes = require('./routes/layananKonselingRoutes');
+const adminPelanggaranRoutes = require('./routes/adminPelanggaranRoutes')
 
 // Inisialisasi cors 
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
@@ -52,6 +53,8 @@ app.use('/literasi', literasiRoutes);
 app.use('/layanan-Konseling', layananKonselingRoutes);
 app.use('/auth', loginRoutes);
 app.use('/users', usersRoutes);
+//Routing Pelanggaran
+app.use('/admin', adminPelanggaranRoutes)
 
 // Run Servers
 app.listen(PORT, () => {

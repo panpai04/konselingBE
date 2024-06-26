@@ -153,3 +153,20 @@ CREATE TABLE public.layanankonseling (
 	bidang_bimbingan varchar(150) NULL,
 	CONSTRAINT layanankonseling_pkey PRIMARY KEY (id)
 );
+
+-- public.pelanggaran definition
+
+-- Drop table
+
+-- DROP TABLE public.pelanggaran;
+
+CREATE TABLE public.pelanggaran (
+	id serial4 NOT NULL,
+	nama_siswa varchar NULL,
+	jenis_kelamin varchar NULL,
+	waktu date NULL,
+	peristiwa varchar NULL,
+	tempat varchar NULL,
+	informan varchar NULL,
+	bidang_bimbingan varchar NULL
+);

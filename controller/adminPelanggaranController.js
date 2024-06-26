@@ -1,4 +1,4 @@
-const { now } = require('moment');
+
 const pool = require('../config/connection');
 const {
     getDataPelanggaran,
@@ -7,7 +7,7 @@ const {
     getDataPelanggaranById,
     updateDataPelanggaran
 } = require('../model/adminPelanggaranModel');
-const { DATE } = require('sequelize');
+
 const getPelanggaran = async function (req, res) {
     try {
         //ambil data dari db
