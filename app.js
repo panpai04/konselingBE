@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser');
 
 // Load environment variables from .env file
 dotenv.config();
-// const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4000;
 // Check if environment variables are loaded correctly
 if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_KEY) {
   throw new Error('Missing Supabase URL or Key in environment variables');
