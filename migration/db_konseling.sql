@@ -123,3 +123,33 @@ CREATE TABLE public.gender (
 	jenis_kelamin varchar(20) NOT NULL,
 	CONSTRAINT gender_pkey PRIMARY KEY (id)
 );
+
+-- public.literasi definition
+
+-- Drop table
+
+-- DROP TABLE public.literasi;
+
+CREATE TABLE public.literasi (
+	id serial4 NOT NULL,
+	judul_literasi varchar(255) NOT NULL,
+	isi_literasi varchar(2000) NOT NULL,
+	CONSTRAINT literasi_pkey PRIMARY KEY (id)
+);
+
+-- public.layanankonseling definition
+
+-- Drop table
+
+-- DROP TABLE public.layanankonseling;
+
+CREATE TABLE public.layanankonseling (
+	id int4 DEFAULT nextval('layanankonseling_nomor_urut_seq'::regclass) NOT NULL,
+	nama_siswa varchar(150) NOT NULL,
+	tanggal date NOT NULL,
+	permasalahan varchar(500) NULL,
+	arahan varchar(500) NULL,
+	tindak_lanjut varchar(500) NULL,
+	bidang_bimbingan varchar(150) NULL,
+	CONSTRAINT layanankonseling_pkey PRIMARY KEY (id)
+);
