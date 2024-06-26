@@ -11,7 +11,7 @@ const { verifyToken, verifyRole } = require('../middleware/verify')
 
 const router = Router();
 router.get('/kelas/:id/siswa', SiswaKelasById);  
-router.get('/', verifyToken, verifyRole('admin'), getKelas);
+router.get('/', verifyToken, getKelas);
 router.get('/auth/kelas', getKelas);
 router.get('/option', getKelasOptions);
 router.get('/nama-kelas', verifyToken, verifyRole('admin'), getClassName);

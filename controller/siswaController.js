@@ -22,8 +22,7 @@ const getStudents = async (req, res) => {
         res.status(500).send({msg:'Internal server error'});
     };
 };
-
-// Dapatkan data siswa berdasarkan ID
+// Dapatkan siswa berdasarkan ID
 const getStudentsById = async (req, res) => {
     try {
         const id = parseInt(req.params.id);

@@ -169,7 +169,7 @@ const Login = async (req, res) => {
           expiresIn: process.env.ACCESS_TOKEN_EXPIRY || '3600s' 
       });
 
-      res.json({ accessToken, name, role })
+      res.json({ accessToken, name, role, userId })
 
   } catch (error) {
       console.error(error);
