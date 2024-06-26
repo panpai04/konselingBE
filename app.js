@@ -34,7 +34,7 @@ const layananKonselingRoutes = require('./routes/layananKonselingRoutes');
 const adminPelanggaranRoutes = require('./routes/adminPelanggaranRoutes')
 
 // Inisialisasi cors 
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+// app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(cors({ credentials: true, origin: 'https://667c51be598c2f0008cd4a77--web-konseling.netlify.app' }));
 // Inisialisasi Body Parser
 app.use(express.json());
