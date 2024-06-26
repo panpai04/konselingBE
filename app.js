@@ -29,6 +29,8 @@ const dashboardRoutes = require('./routes/dashboardRoutes');
 const pelanggaranRoutes = require('./routes/pelanggaranRoutes');
 const konselingRoutes = require('./routes/konselingRoutes');
 const usersRoutes = require('./routes/usersRoutes');
+const literasiRoutes = require('./routes/literasiRoutes');
+const layananKonselingRoutes = require('./routes/layananKonselingRoutes');
 
 // Inisialisasi cors 
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
@@ -46,6 +48,8 @@ app.use('/students', studentRoutes);
 app.use('/konselor', konselorRoutes);
 app.use('/pelanggaran', pelanggaranRoutes);
 app.use('/konseling', konselingRoutes);
+app.use('/literasi', literasiRoutes);
+app.use('/layanan-Konseling', layananKonselingRoutes);
 app.use('/auth', loginRoutes);
 app.use('/users', usersRoutes);
 
