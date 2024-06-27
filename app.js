@@ -36,7 +36,7 @@ const adminPelanggaranRoutes = require('./routes/adminPelanggaranRoutes')
 // Inisialisasi cors 
 // app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(cors({ credentials: true, origin: 'https://main--web-konseling.netlify.app' }));
-app.use(cors({ credentials: true, origin: 'https://667cbfdda523120008e0001c--web-konseling.netlify.app' }));
+// app.use(cors({ credentials: true, origin: 'https://667cbfdda523120008e0001c--web-konseling.netlify.app' }));
 // Inisialisasi Body Parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
